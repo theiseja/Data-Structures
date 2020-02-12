@@ -2,11 +2,18 @@
 as well as its next node in the List."""
 
 
+
 class ListNode:
     def __init__(self, value, prev=None, next=None):
         self.value = value
         self.prev = prev
         self.next = next
+        
+        # reference to the head of the list
+        self.head = None #if head = None LL is empty
+        
+        # reference to the tail of the list
+        self.tail = None #
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
