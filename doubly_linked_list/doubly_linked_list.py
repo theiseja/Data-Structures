@@ -14,6 +14,17 @@ class ListNode:
         
         # reference to the tail of the list
         self.tail = None #
+        
+    def add_to_head(self, value):
+        if empty: 
+            
+        else:
+        # create new Node with the value
+        new_node = Node(value)
+        # update pointer of new Node -> 'head'
+        new_node.set_next(self.head)
+        # mark new Node as 'head'
+        self.head = new_node
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
