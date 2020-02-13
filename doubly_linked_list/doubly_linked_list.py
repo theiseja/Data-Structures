@@ -8,23 +8,6 @@ class ListNode:
         self.value = value
         self.prev = prev
         self.next = next
-        
-        # reference to the head of the list
-        self.head = None #if head = None LL is empty
-        
-        # reference to the tail of the list
-        self.tail = None #
-        
-    def add_to_head(self, value):
-        if empty: 
-            
-        else:
-        # create new Node with the value
-        new_node = Node(value)
-        # update pointer of new Node -> 'head'
-        new_node.set_next(self.head)
-        # mark new Node as 'head'
-        self.head = new_node
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
@@ -70,7 +53,15 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        cur_head = self.head #current head
+        if self.head = self.head: # if head is present
+            self.head = ListNode(value, None, cur_head)
+            cur_head.prev = self.head
+        else: #if head doesn't exist there is no tail, assign new node to head & tail
+            self.head = ListNode(value)
+            self.tail = self.head
+        self.length += 1
+            
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
