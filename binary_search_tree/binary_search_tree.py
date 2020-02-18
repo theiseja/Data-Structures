@@ -41,6 +41,10 @@ def get_max(self):
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
 def for_each(self, cb):
+    # 1. base case: left is None or Right is None
+    
+    # 2. Recursive case:
+    # go left and right 
         pass
 
     # DAY 2 Project -----------------------
