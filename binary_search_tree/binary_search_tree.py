@@ -25,10 +25,17 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
 def contains(self, target):
+    
+    # !. base cases:
+    # target found or we hit none
+    
+    # 2. Recursive case
+    # go down left or right subtree
         pass
 
     # Return the maximum value found in the tree
 def get_max(self):
+    # RIGHT as far as you can go
         pass
 
     # Call the function `cb` on the value of each node
