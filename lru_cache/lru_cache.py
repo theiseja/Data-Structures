@@ -7,7 +7,10 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.size = 0
+        self.order = DoublyLinkedList()
+        self.storage = dict() #{}
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +20,14 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        if key in self.storage:
+            node = self.storage[key]
+            # MRU at the head(most recently used)
+            self.order.move_to_front(node)
+            return node
+        else:
+            return None
+        
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +40,22 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        # item already in cache
+            if key in self.storage.keys():
+            # get node from self.storage
+            
+            # move_to_front(), it's now MRU (at head)
+            else: # new item needs to be cached
+        # still have room in cache
+            if self.size < self.limit:
+                self.order.add_to_head(value)
+                # add to dict
+                self.storage[key] = self.order.head
+                # add to head (MRU)
+                # update size
+                self.size += 1
+            # add to head (MRU)
+            else: # cache is full
+
+# remove LRU(least recently used) from tail
+# add to head (MRU)
