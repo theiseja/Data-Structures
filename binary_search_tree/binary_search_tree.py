@@ -1,7 +1,9 @@
-from dll_stack import Stack
-from dll_queue import Queue
 import sys
-sys.path.append('../queue_and_stack')
+sys.path.append("C:\\Users\\Jesse\\Desktop\\My Projects\\School\\Python\\Data-Structures\\doubly_linked_list")
+from dll_queue import Queue
+from dll_stack import Stack
+print(sys.path)
+
 
 class BinarySearchTree:
     def __init__(self, value):
@@ -22,7 +24,7 @@ class BinarySearchTree:
                 self.left.insert(value)
                 # if >= then go right
         elif value >= self.value:
-            #if not keep moving
+            # if not keep moving
             if self.right is None:
                 self.right = BinarySearchTree(value)
                 # make a new node
@@ -55,12 +57,12 @@ class BinarySearchTree:
     def bft_print(self, node):
         # set up a QUEUE [allows nodes to backtrack]
         # init with root node
-        
+
         # while the queue is NOT empty
             # dequeue node
             # print node.value
             # enqueue node.left, node.right
-            
+
         pass
 
     # Print the value of every node, starting with the given node,
@@ -68,7 +70,7 @@ class BinarySearchTree:
     def dft_print(self, node):
         # set up a stack [node we need to backtrack to because we haven't visited both subtrees yet]
         # init with root node
-        
+
         # while stack NOT empty, one thing remains that must be backtracked through
             # pop node from stacl
             # print the node.value
