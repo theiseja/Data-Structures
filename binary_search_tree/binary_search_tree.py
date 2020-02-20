@@ -1,8 +1,9 @@
-from dll_stack import Stack
-from dll_queue import Queue
 import sys
-sys.path.append('../queue_and_stack')
+import os
+from dll_queue import Queue
+from dll_stack import Stack
 
+sys.path.append(f'{os.getcwd()}/queue_and_stack')
 
 class BinarySearchTree:
     def __init__(self, value):
@@ -12,7 +13,23 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # if inserting root must exist
+        # if value is < self.value
+        if value < self.value:
+            # if different keep moving
+            if self.left is None:
+                self.left = BinarySearchTree(value)
+                # make a left node
+            else:
+                self.left.insert(value)
+                # if >= then go right
+        elif value >= self.value:
+            #if not keep moving
+            if self.right is None:
+                self.right = BinarySearchTree(value)
+                # make a new node
+            else:
+                self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
@@ -38,8 +55,8 @@ class BinarySearchTree:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        # set up a QUEUE [nodes to backtrack to]
-        # init with 'node'
+        # set up a QUEUE [allows nodes to backtrack]
+        # init with root node
         
         # while the queue is NOT empty
             # dequeue node
