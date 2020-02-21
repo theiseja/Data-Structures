@@ -1,8 +1,7 @@
-import sys
-sys.path.append("C:\\Users\\Jesse\\Desktop\\My Projects\\School\\Python\\Data-Structures\\doubly_linked_list")
-from dll_queue import Queue
 from dll_stack import Stack
-print(sys.path)
+from dll_queue import Queue
+import sys
+sys.path.append('../queue_and_stack')
 
 
 class BinarySearchTree:
@@ -35,23 +34,45 @@ class BinarySearchTree:
     # False if it does not
     def contains(self, target):
         # TBC
-        pass
+        if self.value == target:
+            return True
+        if target < self.value:
+            if not self.left:
+                return False
+            else:
+                return self.left.contains(target)
+        else:
+            if not self.right:
+                return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if not self.right:
+            return self.value
+        else:
+            return self.right.get_max()
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+        
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node:
+            self.in_order_print(node.left)
+            print(node.value)
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -63,8 +84,18 @@ class BinarySearchTree:
             # dequeue node
             # print node.value
             # enqueue node.left, node.right
-
-        pass
+            
+        storage = Queue()
+        curr = self #current
+        storage.enqueue(curr)
+        
+        while storage.len() > 0:
+            curr = storage.dequeue()
+            print(curr.value)
+            if curr.left:
+                storage.enqueue(curr.left)
+            if curr.right:
+                storage.enqueue(curr.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -76,15 +107,33 @@ class BinarySearchTree:
             # pop node from stacl
             # print the node.value
             # push node.left, node.right
-        pass
+            storage = Stack()
+            curr = self #current
+            storage.push(curr)
+            
+            while storage.len() > 0:
+                curr = storage.pop() # pops node from stac1
+                print(curr.value) #print node.value
+                if curr.left:
+                    storage.push(curr.left)
+                if curr.right:
+                    storage.push(curr.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        if node is None:
+            return
+        print(node.value)
+        node.pre_order_dft(node.left)
+        node.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if node is None:
+            return
+        node.post_order_dft(node.left)
+        node.post_order_dft(node.right)
+        print(node.value)
