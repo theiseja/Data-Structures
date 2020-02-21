@@ -1,3 +1,8 @@
+import sys
+from doubly_linked_list import DoublyLinkedList
+
+sys.path.append('../doubly_linked_list')
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -40,22 +45,22 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        # item already in cache
-            if key in self.storage.keys():
-            # get node from self.storage
-            
-            # move_to_front(), it's now MRU (at head)
-            else: # new item needs to be cached
-        # still have room in cache
-            if self.size < self.limit:
-                self.order.add_to_head(value)
-                # add to dict
-                self.storage[key] = self.order.head
-                # add to head (MRU)
-                # update size
-                self.size += 1
-            # add to head (MRU)
-            else: # cache is full
+        # Add to pair to cache and add to dict
+        # mark as MRU putt in head of DLL
+        # if at max cap drop oldest and remove from tail
+        if key in self.storage:
+            node = self.storage[key]
+            node.value = (key, value)
+            self.order.move_to_front(node)
+            return
+
+        if self.size is self.limit:
+            del self.storage[self.order.tail.value[0]]
+            self.order.remove_from_tail()
+            self.size -= 1
+        self.order.add_to_head((key, value))
+        self.storage[key] = self.order.head
+        self.size += 1
 
 # remove LRU(least recently used) from tail
 # add to head (MRU)
